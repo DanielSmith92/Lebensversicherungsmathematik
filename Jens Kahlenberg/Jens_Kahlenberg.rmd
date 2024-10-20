@@ -1,0 +1,268 @@
+---
+title: "Jens Kahlenberg"
+author: "Daniel Smith"
+date: "2024-10-17"
+output: html_document
+header-includes:
+  - \usepackage{tikz}
+  - \newcommand{\boxaroundn}{\tikz[baseline=(n.base)]{\node[inner sep=1pt,draw,rectangle] (n) {\( n \)};}}
+  - \usepackage{actuarialsymbol}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intro {.tabset}
+
+
+
+
+
+## Kapitel 2 - Einordnung {.tabset}
+
+### **Cash Flow Projection Model** (kurz: **CFPM**)  
+Betrachtet man die Geldflüsse zum Zeitpunkt des Abschlusses eines Lebensversicherungsvertrags, so stellt man fest, dass eine neue Police für das Unternehmen wirtschaftlich eine Investition darstellt. Denn: Im Geschäftsjahr, in dem die Police zugeht, bewirkt diese üblicherweise einen Verlust, der darin
+begründet ist, dass bei Vertragsabschluss Provisionen für die erfolgreiche Vertragsvermittlung gezahlt werden, die eingehenden Beiträge der Kunden in ebendiesem Geschäftsjahr jedoch i.d.R. deutlich niedriger als die Höhe der ausgezahlten Provisionen sind.
+
+
+### **Embedded Value** (kurz: **EV**)  
+Definiert als die Summe aller künftigen Gewinne des Unternehmens,
+ausgedrückt im heutigen Geld. --> *Barwertbetrachtung*
+
+
+### Stochastische Bewertung  
+  <u>Barwertbetrachtung:</u>  
+  Unterstellt man eine risikofreie Zinsstrukturkurve (z.B. die jährlichen Renditen Schweizer Staatanleihen), so kann man durch Diskontierung den heutigen Wert einer Auszahlung $K_0$ in $n$ Jahren ermitteln. Was diese Betrachtung jedoch nicht berücksichtigt, sind Schwankungen auf den Kapitalmärkten und ihr Einfluss auf den Wert des Portfolios. 
+  
+  <u>Weshalb sind Kapitalmarkschwankungen überhaupt relevant für die Bewertung von Versicherungspolicen?</u>  
+  Die Art der Beziehung zwischen Versicherer und Versicherungsnehmer ist asymmetrisch. Während der Kunde den Vertrag stornieren kann, kann dies der Versicherer nicht. Der Kunde in vielen aufgeschobenen Rentenversicherungen entscheiden, ob dieser am Ende der Aufschubsdauer das erreichte Kapital ausbezahlt bekommt oder sich eine Leibrente ausbezahlen möchte; der Versiherer wird dazu nicht gefragt. Ebenso kann der Kunde einer planmässigen Beitragserhöhung wiedersprechen; und der Versicherer muss die Entscheidung des Kunden akzeptieren. Diese Asymmetrien laufen unter der Bezeichnung **Optionen und Garantien**. --> verhält sich wie ein *Finanzderivat*!
+  <font color="red">Googeln, wie Finanzderivat definiert ist!!!</font>
+  
+  Und ähnlich wie bei Derivaten erfolgen künftige Zahlungsströme nicht vorherbestimmt 
+  (man sagt auch deterministisch), sondern sie sind abhängig von einer oder mehreren 
+  schwankenden Größen wie Zinshöhen oder Aktienkursen, deren Wert wiederum von der Entwicklung der
+  Kapitalmärkte abhängt.
+  
+  <u>für Lebensversicherer:</u>  
+  Die wesentlichen künftigen Zahlungsströme bestehen aus Prämien, Leistungen, Kosten, 
+  Dividenden und Steuern!
+  
+  <u>Zwei Sichtweisen:</u>  
+  1. Aktionärssicht (Blickrichtung des Eigentümers)  
+     --> Wert des Portfolios steht im Vordergrund  
+     --> Barwert der (zukünftigen) Dividenden berechnen  
+     --> Barwert gewöhnlich als **Present Value of Future Profits** (kurz: **PVFP**)  
+  
+  2. Kundensicht  
+     --> Höhe der Verpflichtungen gegenüber Kunden im Vordergrund  
+     --> Barwert der Auszahlungen (Leistungen und Kosten) abzüglich der Einzahlungen (Prämien) berechnen  
+     --> Resultierendee Betrag: **Best Estimate (of) Liabilities** (kurz: **BEL**)
+     
+  
+  <u>**stochastisches (Unternehmens-)Modell**</u> (kurz: **SUM**)  
+  Auszahlungsmuster für Dividenden hochkomplex und Schwankungen der Kapitalmärkte können nicht direkt abgeleitet werden, da viel zu komplex. --> keine analytische Formel  
+  <u>Idee:</u> **Monte-Carlo-Simulationen** basierend auf tausenden SImulationen von Zinsen, Aktien und anderen Kapitalgrössen  
+  Diesen Kapitalmarktgrössen liegen stochastische Differenzialgleichungen zugrunde, welche die Dynamik von diesen beschreibt.
+
+--> siehe Abschnitt 2.3. in [Jens] Komponenten eines stochastischen Unternehmensmodellsür weitere Details!!
+
+
+### Solvency 2
+**Solvency II** ist eine Sammlung von europaweiten Regelungen, welche den Versicherungsunternehmen u.a. feste Vorgaben zur Berechnung der Solvabilität macht.  
+
+**<u>Solvabilität:</u>** Verhältnis zwischen den verfügbaren Eigenmitteln und demjenigen Verlust, der (modellmäßig) nur einmal in 200 Jahren auftreten kann. Sind die Eigenmittel höher als der
+Verlust in einem derart verheerenden Ereignis, kann das Unternehmen eine solch ungünstige Situation aus eigener Kraft überstehen — es ist also solvent.  
+
+Die BEL beschreibt den besten Schätzer (Englisch „best estimate“) für die in den bestehenden Policen enthaltenen Zusagen bzw. Verpflichtungen (Englisch „liabilities“) den Versicherungsnehmern gegenüber. Solvency II fordert speziell von den Lebensversicherern, die BEL als Barwert der Auszahlungen abzüglich des Barwertes der Einnahmen zu berechnen.  
+
+Seit der Einführung von Solvency II soll die Reserve marktnah ermittelt werden. Daraus folgt, dass die Entwicklung der Kapitalanlagen, die künftigen Überschusszuteilungen an Kunden und die möglichen Handlungen der Versicherungsnehmer (bspw. Stornierung, Beitragsfreistellung, Kapitalabfindung statt Rentenauszahlung) realistisch geschätzt werden. Wie oben bereits dargelegt, erfolgt diese Schätzung mithilfe von vielen Monte-Carlo-Simulationen, um im Mittel den besten Schätzer für die Verpflichtungen zu gewinnen.  
+
+Die meisten Risiken aus der Solvency II-Risikolandkarte eines Lebensversicherungsunternehmens werden mithilfe von stochastischen Unternehmensmodellen bewertet: sowohl die Marktrisiken, d.h. Aktienentwicklung, Immobilienentwicklung, Zinsbewegung, Zinsvolatilität, Währungsschwankungen, Ausfall von Anleihen, als auch die versicherungstechnischen Risiken Biometrie (Sterblichkeit einschließlich Katastrophen, Langlebigkeit, Invalidität), Kosten und Storno.  
+
+
+
+## Kapitel 3 - Grundlagen der Lebensversicherung {.tabset}
+Was ist Versicherung bzw. eine Versicherung?  
+--> Grundlegenden Begriffen vertraut gemacht und wesentliche Details von Versicherungen vorgestellt 
+
+### Risikotransfer
+Versicherung stellen einen Risikotransfer dar.  
+Die wichtigsten, durch Lebensversicherungen gedeckten Risiken sind Tod und Invalidität sowie das Langlebigkeitsrisiko. Daneben gibt es noch Versicherungsschutz für Risiken wie Pflegebedürftigkeit oder den Eintritt schwerer Krankheiten (Dread Disease).  
+
+
+<u>Warum ist das Risiko beim Versicherungsunternehmen besser aufgehoben ist als bei der einzelnen Person selbst?</u>  
+
+- auf den ersten Blick: größere Finanzstärke  
+- Hauptgrund: **mathematischer Grund --> sog. Risikoausgleich im Kollektiv**    
+  Die Tatsache, dass der Versicherer viele gleichartige Risiken übernimmt, führt nämlich zu 
+  Ausgleichseffekten in seinem Bestand an Versicherungen. Dies bedeutet, dass sich die zufällige 
+  Schwankung in der Höhe der zu zahlenden Schadenleistungen bei zunehmender Anzahl gleichartiger 
+  Verträge reduziert und somit stabiler, **für den Lebensversicherer besser kalkulierbar wird**.  
+
+
+### Rechnungsgrundlagen
+Die bestehende Auflage, Reserven in ausreichender Höhe zu stellen, impliziert insbesondere, 
+vorsichtige Annahmen über diejenigen Grössen zu treffen, welche einen Einfluss auf die Entwicklung des 
+Vertrags haben, nämlich:  
+
+<ul>
+  <li>Zins,</li>
+  <li>Biometrie,</li>
+  <li>Kosten.</li>
+</ul>
+
+Diese drei Einflussfaktoren werden unter dem Begriff **Annahmen** bzw. **Rechnungsgrundlagen** zusammengefasst.  
+
+<u>**Rechnungsgrundlagen 1. Ordnung**</u>  
+entsprechen den vorsichtigen Annahmen über die drei vorgenannten Grössen. 
+Sie werden für die Berechnung von Prämien und Reserven verwendet, wobei es zwei voneinander abweichende Sätze von Annahmen für die Prämien- und Reserveberechnung geben kann.  
+<font color="red"> --> Rechnungsgrundlagen 1. Ordnung googlen!!</font>
+
+
+<u>**Rechnungsgrundlagen 2. Ordnung**</u>  
+spiegeln die tatsächliche Erfahrung des Versicherers wider bzw. das, was der Versicherer als realistischen „Schadenverlauf“ erwartet.  
+Wie wir in Kap. 10 sehen werden, führen Unterschiede in den Rechnungsgrundlagen 1. und 2. Ordnung zur Entstehung von Überschüssen, welche ihrerseits den Versicherten wieder zugute kommen.  
+<font color="red"> --> Rechnungsgrundlagen 2. Ordnung googlen und Link zu Kap 10 später einführen!!</font>
+
+
+### Standard-Versicherungen {.tabset}
+Im Folgenden werden die gängigsten Produkte der Lebensversicherung und ihre Charakteristika beschrieben.
+
+<u>Unterscheidungskriterien:</u>  
+<ul>
+  <li>**Versorgungsschicht**: siehe Abschnitt 3.3. --> bezieht sich auf Deutschland, nicht Schweiz!</li>
+  <li>**Produkte** bzw. **Produktarten**: gibt es Produkte zur Absicherung des Todesfallrisikos, des 
+      Erlebensfall- oder Langlebigkeitsrisikos sowie des Invaliditätsrisikos
+      <ul><li>**Tarife** --> **Tarifstufe** oder **Kostenstufe** --> **Tarifgeneration**</li></ul>
+  </li>
+  <li>**Vertragsteil:** Hauptversicherung vs. Zusatzversicherung
+    <ul>
+      <li>**Hauptversicherung:** rechtlich eigenständiger Versicherungsvertrag -> bildet die 
+          Hauptkomponente einer Versicherung
+      </li>
+      <li>**Zusatzversicherung:** Anbündelung einer Zusatzkomponente an eine Hauptversicherung dar, mit
+          der ein zusätzlicher Versicherungsschutz eingeschlossen wird. Eine Zusatzversicherung bildet
+          eine rechtliche Einheit mit der Hauptversicherung und kann i.d.R. allein, ohne die 
+          Hauptversicherung, nicht fortbestehen. Dies bedeutet, dass bei Beendigung der Hauptversicherung
+          auch die Zusatzversicherung endet. Umgekehrt kann eine Zusatzversicherung für sich allein
+          jedoch durchaus gekündigt werden, ohne dass die Hauptversicherung erlischt.
+      </li>
+    </ul>
+  </li>
+  <li>**Geschäftsart:** Einzelgeschäft oder Kollektivgeschäft</li>
+</ul>
+
+
+#### Risikolebensversicherung
+Die Risikolebensversicherung gewährt Versicherungsschutz ausschließlich für den Todesfall. Nennt man häufig auch **reinen Todesfallversicherung**.
+
+<u>Versicherungsart:</u> 
+Stirbt versicherte Person innerhalb der Versicherungsdauer, so wird eine Todesfallleistung (=vereinbarte Versicherungssumme) fällig. Bei einer lebenslangen Risikolebensversicherung wird die Versicherungsleistung folglich in jedem Fall ausgezahlt. 
+
+  <u>Vertragsteil:</u> Risikolebensversicherungen können als
+  Haupt- und als Zusatzversicherungen abgeschlossen werden.  
+
+  <u>Tarife:</u> 
+  Das Leistungsspektrum derartiger Versicherungen umfasst sowohl
+  Tarife mit gleichbleibender (konstanter) Versicherungssumme als
+  auch Tarife mit einer planmäßig steigenden und/oder fallenden
+  Versicherungssumme. Die Veränderung kann entweder linear,
+  prozentual oder nach einem anderen Muster erfolgen.
+  
+  <u>Differenzierungen nach Risikomerkmalen:</u> 
+  Bei Risikolebensversicherungen findet häufig eine
+  Differenzierung nach zusätzlichen sterblichkeitsbeeinflussenden
+  Risikomerkmalen statt. So gibt es bspw. Unterscheidungen nach
+  dem Raucherstatus (Raucher oder Nichtraucher) oder 
+  nach dem Akademiker-Status (Akademiker oder Nicht-Akademiker),
+  die auch in Kombination auftreten können und somit zu einer
+  Aufsplittung in homogenere Zielgruppen führen. Derartige Tarife
+  werden auch als **Preferred Lives-Tarife** bezeichnet, da die
+  Prämien für die bevorzugten Personengruppen (z.B. nicht
+  rauchende Akademiker) deutlich reduziert ausfallen.
+  
+  <u>Verbundene Leben:</u> 
+  Risikolebensversicherungen können auch auf verbundene Leben
+  abgeschlossen werden. Bei Tod einer der versicherte Personen
+  wird die Versicherungssumme fällig, jedoch nur ein einziges
+  Mal, d.h. wenn die erste oder die letzte VP verstirbt.
+  Derartige Versicherungen dienen der gegenseitigen Absicherung
+  der jeweils anderen versicherte Personen.
+
+
+
+
+
+
+#### Kapitallebensversicherung
+
+<u>**reine Erlebensfallversicherung:**</u>
+Beim Erleben des Ablaufs der Versicherungsdauer wird die Versicherungssumme auszahlt.  
+--> historisches Relikt, das in dieser Reinform heute kaum noch zu finden ist
+
+
+<u>**gemischte Versicherung:**</u>
+Kombination aus der reinen Todesfall- und der reinen Erlebensfallversicherung:  
+Bei Tod innerhalb der Versicherungsdauer wird eine 
+Todesfallleistung fällig; überlebt die VP jedoch bis zum Ende der
+Versicherungsdauer, wird eine Erlebensfallleistung ausgezahlt.
+
+<u>Beachte:</u>  
+Klassisch stimmen die für den Todes- und den Erlebensfall
+versicherten Summen überein. Angeboten werden inzwischen jedoch
+auch Varianten mit voneinander abweichender Todes- und
+Erlebensfallsumme. Dabei kann das Verhältnis dieser beiden
+Grössen konstant sein oder im Laufe der Versicherungsdauer
+variieren. Bspw. kann die Todesfallsumme zu Vertragsbeginn
+gegenüber der Erlebensfallsumme abgesenkt sein und gegen Ende der
+Versicherungsdauer auf die Erlebensfallsumme ansteigen. Denkbar
+ist auch, dass die Todesfallsumme anfänglich höher ist als die
+Erlebensfallsumme und linear auf diese absinkt. Es lassen sich
+nahezu beliebige Leistungsspektren konstruieren.
+
+
+<u>kapitalbildende Lebensversicherung vs Kapitallebensversicherung</u>  
+Es sei angemerkt, dass der Begriff kapitalbildende Lebensversicherung
+keineswegs gleichbedeutend mit dem der Kapitallebensversicherung ist. Vielmehr
+ist ersterer ein **Oberbegriff für alle diejenigen Lebensversicherungen, bei
+denen in nicht unerheblichem Maße ein Kapital gebildet werden muss, um die
+als sehr wahrscheinlich einzustufende Auszahlung der Versicherungsleistung
+durchführen zu können**. Demnach gehören die Kapitallebensversicherung und
+die Rentenversicherung zu den kapitalbildenden Versicherungen, während
+Risikolebens- und Berufsunfähigkeitsversicherung nicht dazu zählen, sondern
+unter dem Begriff Risikoversicherung zusammengefasst werden.
+
+
+
+### Termfix-Versicherung
+Abschnitt 3.6.4 in Jens
+
+
+
+### Rentenversicherung
+3.6.5 in Jens
+
+
+### Hinterbliebenenrentenversicherung
+3.6.6 in Jens
+
+
+### Berufs-/Erwerbsunfähigkeitsversicherung
+3.6.7 Berufs-/Erwerbsunfähigkeitsversicherung in Jens
+
+
+### Fondsgebundene Lebens- oder Rentenversicherung
+3.6.8 Fondsgebundene Lebens- oder Rentenversicherung in Jens
+
+
+
+### Versicherungsmathematische Notation
+<h1>Versicherungsmathematische Notation</h1>
+<img src="C:/Users/danie/Dropbox/1_Ausbildung Aktuar/ETH/Lebensversicherungsmathematik/Jens Kahlenberg/Bilder/Versicherungsmathematische Notation.png" alt="Versicherungsmathematische Notation">
+
+
+```{r child='./Kapitel/Kapitel4.rmd'}
+
+```
+

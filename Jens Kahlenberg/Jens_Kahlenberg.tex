@@ -1,0 +1,653 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{tikz}
+\newcommand{\boxaroundn}{\tikz[baseline=(n.base)]{\node[inner sep=1pt,draw,rectangle] (n) {\( n \)};}}
+\usepackage{actuarialsymbol}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Jens Kahlenberg},
+  pdfauthor={Daniel Smith},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Jens Kahlenberg}
+\author{Daniel Smith}
+\date{2024-10-17}
+
+\begin{document}
+\maketitle
+
+\hypertarget{intro}{%
+\section{Intro}\label{intro}}
+
+\hypertarget{kapitel-2---einordnung}{%
+\subsection{Kapitel 2 - Einordnung}\label{kapitel-2---einordnung}}
+
+\hypertarget{cash-flow-projection-model-kurz-cfpm}{%
+\subsubsection{\texorpdfstring{\textbf{Cash Flow Projection Model}
+(kurz:
+\textbf{CFPM})}{Cash Flow Projection Model (kurz: CFPM)}}\label{cash-flow-projection-model-kurz-cfpm}}
+
+Betrachtet man die Geldflüsse zum Zeitpunkt des Abschlusses eines
+Lebensversicherungsvertrags, so stellt man fest, dass eine neue Police
+für das Unternehmen wirtschaftlich eine Investition darstellt. Denn: Im
+Geschäftsjahr, in dem die Police zugeht, bewirkt diese üblicherweise
+einen Verlust, der darin begründet ist, dass bei Vertragsabschluss
+Provisionen für die erfolgreiche Vertragsvermittlung gezahlt werden, die
+eingehenden Beiträge der Kunden in ebendiesem Geschäftsjahr jedoch
+i.d.R. deutlich niedriger als die Höhe der ausgezahlten Provisionen
+sind.
+
+\hypertarget{embedded-value-kurz-ev}{%
+\subsubsection{\texorpdfstring{\textbf{Embedded Value} (kurz:
+\textbf{EV})}{Embedded Value (kurz: EV)}}\label{embedded-value-kurz-ev}}
+
+Definiert als die Summe aller künftigen Gewinne des Unternehmens,
+ausgedrückt im heutigen Geld. --\textgreater{} \emph{Barwertbetrachtung}
+
+\hypertarget{stochastische-bewertung}{%
+\subsubsection{Stochastische Bewertung}\label{stochastische-bewertung}}
+
+Barwertbetrachtung:\\
+Unterstellt man eine risikofreie Zinsstrukturkurve (z.B. die jährlichen
+Renditen Schweizer Staatanleihen), so kann man durch Diskontierung den
+heutigen Wert einer Auszahlung \(K_0\) in \(n\) Jahren ermitteln. Was
+diese Betrachtung jedoch nicht berücksichtigt, sind Schwankungen auf den
+Kapitalmärkten und ihr Einfluss auf den Wert des Portfolios.
+
+Weshalb sind Kapitalmarkschwankungen überhaupt relevant für die
+Bewertung von Versicherungspolicen?\\
+Die Art der Beziehung zwischen Versicherer und Versicherungsnehmer ist
+asymmetrisch. Während der Kunde den Vertrag stornieren kann, kann dies
+der Versicherer nicht. Der Kunde in vielen aufgeschobenen
+Rentenversicherungen entscheiden, ob dieser am Ende der Aufschubsdauer
+das erreichte Kapital ausbezahlt bekommt oder sich eine Leibrente
+ausbezahlen möchte; der Versiherer wird dazu nicht gefragt. Ebenso kann
+der Kunde einer planmässigen Beitragserhöhung wiedersprechen; und der
+Versicherer muss die Entscheidung des Kunden akzeptieren. Diese
+Asymmetrien laufen unter der Bezeichnung \textbf{Optionen und
+Garantien}. --\textgreater{} verhält sich wie ein \emph{Finanzderivat}!
+Googeln, wie Finanzderivat definiert ist!!!
+
+Und ähnlich wie bei Derivaten erfolgen künftige Zahlungsströme nicht
+vorherbestimmt (man sagt auch deterministisch), sondern sie sind
+abhängig von einer oder mehreren schwankenden Größen wie Zinshöhen oder
+Aktienkursen, deren Wert wiederum von der Entwicklung der Kapitalmärkte
+abhängt.
+
+für Lebensversicherer:\\
+Die wesentlichen künftigen Zahlungsströme bestehen aus Prämien,
+Leistungen, Kosten, Dividenden und Steuern!
+
+Zwei Sichtweisen:\\
+1. Aktionärssicht (Blickrichtung des Eigentümers)\\
+--\textgreater{} Wert des Portfolios steht im Vordergrund\\
+--\textgreater{} Barwert der (zukünftigen) Dividenden berechnen\\
+--\textgreater{} Barwert gewöhnlich als \textbf{Present Value of Future
+Profits} (kurz: \textbf{PVFP})
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Kundensicht\\
+  --\textgreater{} Höhe der Verpflichtungen gegenüber Kunden im
+  Vordergrund\\
+  --\textgreater{} Barwert der Auszahlungen (Leistungen und Kosten)
+  abzüglich der Einzahlungen (Prämien) berechnen\\
+  --\textgreater{} Resultierendee Betrag: \textbf{Best Estimate (of)
+  Liabilities} (kurz: \textbf{BEL})
+\end{enumerate}
+
+\textbf{stochastisches (Unternehmens-)Modell} (kurz: \textbf{SUM})\\
+Auszahlungsmuster für Dividenden hochkomplex und Schwankungen der
+Kapitalmärkte können nicht direkt abgeleitet werden, da viel zu komplex.
+--\textgreater{} keine analytische Formel\\
+Idee: \textbf{Monte-Carlo-Simulationen} basierend auf tausenden
+SImulationen von Zinsen, Aktien und anderen Kapitalgrössen\\
+Diesen Kapitalmarktgrössen liegen stochastische Differenzialgleichungen
+zugrunde, welche die Dynamik von diesen beschreibt.
+
+--\textgreater{} siehe Abschnitt 2.3. in {[}Jens{]} Komponenten eines
+stochastischen Unternehmensmodellsür weitere Details!!
+
+\hypertarget{solvency-2}{%
+\subsubsection{Solvency 2}\label{solvency-2}}
+
+\textbf{Solvency II} ist eine Sammlung von europaweiten Regelungen,
+welche den Versicherungsunternehmen u.a. feste Vorgaben zur Berechnung
+der Solvabilität macht.
+
+\textbf{Solvabilität:} Verhältnis zwischen den verfügbaren Eigenmitteln
+und demjenigen Verlust, der (modellmäßig) nur einmal in 200 Jahren
+auftreten kann. Sind die Eigenmittel höher als der Verlust in einem
+derart verheerenden Ereignis, kann das Unternehmen eine solch ungünstige
+Situation aus eigener Kraft überstehen --- es ist also solvent.
+
+Die BEL beschreibt den besten Schätzer (Englisch „best estimate``) für
+die in den bestehenden Policen enthaltenen Zusagen bzw. Verpflichtungen
+(Englisch „liabilities``) den Versicherungsnehmern gegenüber. Solvency
+II fordert speziell von den Lebensversicherern, die BEL als Barwert der
+Auszahlungen abzüglich des Barwertes der Einnahmen zu berechnen.
+
+Seit der Einführung von Solvency II soll die Reserve marktnah ermittelt
+werden. Daraus folgt, dass die Entwicklung der Kapitalanlagen, die
+künftigen Überschusszuteilungen an Kunden und die möglichen Handlungen
+der Versicherungsnehmer (bspw. Stornierung, Beitragsfreistellung,
+Kapitalabfindung statt Rentenauszahlung) realistisch geschätzt werden.
+Wie oben bereits dargelegt, erfolgt diese Schätzung mithilfe von vielen
+Monte-Carlo-Simulationen, um im Mittel den besten Schätzer für die
+Verpflichtungen zu gewinnen.
+
+Die meisten Risiken aus der Solvency II-Risikolandkarte eines
+Lebensversicherungsunternehmens werden mithilfe von stochastischen
+Unternehmensmodellen bewertet: sowohl die Marktrisiken, d.h.
+Aktienentwicklung, Immobilienentwicklung, Zinsbewegung, Zinsvolatilität,
+Währungsschwankungen, Ausfall von Anleihen, als auch die
+versicherungstechnischen Risiken Biometrie (Sterblichkeit einschließlich
+Katastrophen, Langlebigkeit, Invalidität), Kosten und Storno.
+
+\hypertarget{kapitel-3---grundlagen-der-lebensversicherung}{%
+\subsection{Kapitel 3 - Grundlagen der
+Lebensversicherung}\label{kapitel-3---grundlagen-der-lebensversicherung}}
+
+Was ist Versicherung bzw. eine Versicherung?\\
+--\textgreater{} Grundlegenden Begriffen vertraut gemacht und
+wesentliche Details von Versicherungen vorgestellt
+
+\hypertarget{risikotransfer}{%
+\subsubsection{Risikotransfer}\label{risikotransfer}}
+
+Versicherung stellen einen Risikotransfer dar.\\
+Die wichtigsten, durch Lebensversicherungen gedeckten Risiken sind Tod
+und Invalidität sowie das Langlebigkeitsrisiko. Daneben gibt es noch
+Versicherungsschutz für Risiken wie Pflegebedürftigkeit oder den
+Eintritt schwerer Krankheiten (Dread Disease).
+
+Warum ist das Risiko beim Versicherungsunternehmen besser aufgehoben ist
+als bei der einzelnen Person selbst?
+
+\begin{itemize}
+\tightlist
+\item
+  auf den ersten Blick: größere Finanzstärke\\
+\item
+  Hauptgrund: \textbf{mathematischer Grund --\textgreater{} sog.
+  Risikoausgleich im Kollektiv}\\
+  Die Tatsache, dass der Versicherer viele gleichartige Risiken
+  übernimmt, führt nämlich zu Ausgleichseffekten in seinem Bestand an
+  Versicherungen. Dies bedeutet, dass sich die zufällige Schwankung in
+  der Höhe der zu zahlenden Schadenleistungen bei zunehmender Anzahl
+  gleichartiger Verträge reduziert und somit stabiler, \textbf{für den
+  Lebensversicherer besser kalkulierbar wird}.
+\end{itemize}
+
+\hypertarget{rechnungsgrundlagen}{%
+\subsubsection{Rechnungsgrundlagen}\label{rechnungsgrundlagen}}
+
+Die bestehende Auflage, Reserven in ausreichender Höhe zu stellen,
+impliziert insbesondere, vorsichtige Annahmen über diejenigen Grössen zu
+treffen, welche einen Einfluss auf die Entwicklung des Vertrags haben,
+nämlich:
+
+Zins,
+
+Biometrie,
+
+Kosten.
+
+Diese drei Einflussfaktoren werden unter dem Begriff \textbf{Annahmen}
+bzw. \textbf{Rechnungsgrundlagen} zusammengefasst.
+
+\textbf{Rechnungsgrundlagen 1. Ordnung}\\
+entsprechen den vorsichtigen Annahmen über die drei vorgenannten
+Grössen. Sie werden für die Berechnung von Prämien und Reserven
+verwendet, wobei es zwei voneinander abweichende Sätze von Annahmen für
+die Prämien- und Reserveberechnung geben kann.\\
+--\textgreater{} Rechnungsgrundlagen 1. Ordnung googlen!!
+
+\textbf{Rechnungsgrundlagen 2. Ordnung}\\
+spiegeln die tatsächliche Erfahrung des Versicherers wider bzw. das, was
+der Versicherer als realistischen „Schadenverlauf`` erwartet.\\
+Wie wir in Kap. 10 sehen werden, führen Unterschiede in den
+Rechnungsgrundlagen 1. und 2. Ordnung zur Entstehung von Überschüssen,
+welche ihrerseits den Versicherten wieder zugute kommen.\\
+--\textgreater{} Rechnungsgrundlagen 2. Ordnung googlen und Link zu Kap
+10 später einführen!!
+
+\hypertarget{standard-versicherungen}{%
+\subsubsection{Standard-Versicherungen}\label{standard-versicherungen}}
+
+Im Folgenden werden die gängigsten Produkte der Lebensversicherung und
+ihre Charakteristika beschrieben.
+
+Unterscheidungskriterien:\\
+
+\textbf{Versorgungsschicht}: siehe Abschnitt 3.3. --\textgreater{}
+bezieht sich auf Deutschland, nicht Schweiz!
+
+\textbf{Produkte} bzw. \textbf{Produktarten}: gibt es Produkte zur
+Absicherung des Todesfallrisikos, des Erlebensfall- oder
+Langlebigkeitsrisikos sowie des Invaliditätsrisikos
+
+\textbf{Tarife} --\textgreater{} \textbf{Tarifstufe} oder
+\textbf{Kostenstufe} --\textgreater{} \textbf{Tarifgeneration}
+
+\textbf{Vertragsteil:} Hauptversicherung vs.~Zusatzversicherung
+
+\textbf{Hauptversicherung:} rechtlich eigenständiger
+Versicherungsvertrag -\textgreater{} bildet die Hauptkomponente einer
+Versicherung
+
+\textbf{Zusatzversicherung:} Anbündelung einer Zusatzkomponente an eine
+Hauptversicherung dar, mit der ein zusätzlicher Versicherungsschutz
+eingeschlossen wird. Eine Zusatzversicherung bildet eine rechtliche
+Einheit mit der Hauptversicherung und kann i.d.R. allein, ohne die
+Hauptversicherung, nicht fortbestehen. Dies bedeutet, dass bei
+Beendigung der Hauptversicherung auch die Zusatzversicherung endet.
+Umgekehrt kann eine Zusatzversicherung für sich allein jedoch durchaus
+gekündigt werden, ohne dass die Hauptversicherung erlischt.
+
+\textbf{Geschäftsart:} Einzelgeschäft oder Kollektivgeschäft
+
+\hypertarget{risikolebensversicherung}{%
+\paragraph{Risikolebensversicherung}\label{risikolebensversicherung}}
+
+Die Risikolebensversicherung gewährt Versicherungsschutz ausschließlich
+für den Todesfall. Nennt man häufig auch \textbf{reinen
+Todesfallversicherung}.
+
+Versicherungsart: Stirbt versicherte Person innerhalb der
+Versicherungsdauer, so wird eine Todesfallleistung (=vereinbarte
+Versicherungssumme) fällig. Bei einer lebenslangen
+Risikolebensversicherung wird die Versicherungsleistung folglich in
+jedem Fall ausgezahlt.
+
+Vertragsteil: Risikolebensversicherungen können als Haupt- und als
+Zusatzversicherungen abgeschlossen werden.
+
+Tarife: Das Leistungsspektrum derartiger Versicherungen umfasst sowohl
+Tarife mit gleichbleibender (konstanter) Versicherungssumme als auch
+Tarife mit einer planmäßig steigenden und/oder fallenden
+Versicherungssumme. Die Veränderung kann entweder linear, prozentual
+oder nach einem anderen Muster erfolgen.
+
+Differenzierungen nach Risikomerkmalen: Bei Risikolebensversicherungen
+findet häufig eine Differenzierung nach zusätzlichen
+sterblichkeitsbeeinflussenden Risikomerkmalen statt. So gibt es bspw.
+Unterscheidungen nach dem Raucherstatus (Raucher oder Nichtraucher) oder
+nach dem Akademiker-Status (Akademiker oder Nicht-Akademiker), die auch
+in Kombination auftreten können und somit zu einer Aufsplittung in
+homogenere Zielgruppen führen. Derartige Tarife werden auch als
+\textbf{Preferred Lives-Tarife} bezeichnet, da die Prämien für die
+bevorzugten Personengruppen (z.B. nicht rauchende Akademiker) deutlich
+reduziert ausfallen.
+
+Verbundene Leben: Risikolebensversicherungen können auch auf verbundene
+Leben abgeschlossen werden. Bei Tod einer der versicherte Personen wird
+die Versicherungssumme fällig, jedoch nur ein einziges Mal, d.h. wenn
+die erste oder die letzte VP verstirbt. Derartige Versicherungen dienen
+der gegenseitigen Absicherung der jeweils anderen versicherte Personen.
+
+\hypertarget{kapitallebensversicherung}{%
+\paragraph{Kapitallebensversicherung}\label{kapitallebensversicherung}}
+
+\textbf{reine Erlebensfallversicherung:} Beim Erleben des Ablaufs der
+Versicherungsdauer wird die Versicherungssumme auszahlt.\\
+--\textgreater{} historisches Relikt, das in dieser Reinform heute kaum
+noch zu finden ist
+
+\textbf{gemischte Versicherung:} Kombination aus der reinen Todesfall-
+und der reinen Erlebensfallversicherung:\\
+Bei Tod innerhalb der Versicherungsdauer wird eine Todesfallleistung
+fällig; überlebt die VP jedoch bis zum Ende der Versicherungsdauer, wird
+eine Erlebensfallleistung ausgezahlt.
+
+Beachte:\\
+Klassisch stimmen die für den Todes- und den Erlebensfall versicherten
+Summen überein. Angeboten werden inzwischen jedoch auch Varianten mit
+voneinander abweichender Todes- und Erlebensfallsumme. Dabei kann das
+Verhältnis dieser beiden Grössen konstant sein oder im Laufe der
+Versicherungsdauer variieren. Bspw. kann die Todesfallsumme zu
+Vertragsbeginn gegenüber der Erlebensfallsumme abgesenkt sein und gegen
+Ende der Versicherungsdauer auf die Erlebensfallsumme ansteigen. Denkbar
+ist auch, dass die Todesfallsumme anfänglich höher ist als die
+Erlebensfallsumme und linear auf diese absinkt. Es lassen sich nahezu
+beliebige Leistungsspektren konstruieren.
+
+kapitalbildende Lebensversicherung vs Kapitallebensversicherung\\
+Es sei angemerkt, dass der Begriff kapitalbildende Lebensversicherung
+keineswegs gleichbedeutend mit dem der Kapitallebensversicherung ist.
+Vielmehr ist ersterer ein \textbf{Oberbegriff für alle diejenigen
+Lebensversicherungen, bei denen in nicht unerheblichem Maße ein Kapital
+gebildet werden muss, um die als sehr wahrscheinlich einzustufende
+Auszahlung der Versicherungsleistung durchführen zu können}. Demnach
+gehören die Kapitallebensversicherung und die Rentenversicherung zu den
+kapitalbildenden Versicherungen, während Risikolebens- und
+Berufsunfähigkeitsversicherung nicht dazu zählen, sondern unter dem
+Begriff Risikoversicherung zusammengefasst werden.
+
+\hypertarget{termfix-versicherung}{%
+\subsubsection{Termfix-Versicherung}\label{termfix-versicherung}}
+
+Abschnitt 3.6.4 in Jens
+
+\hypertarget{rentenversicherung}{%
+\subsubsection{Rentenversicherung}\label{rentenversicherung}}
+
+3.6.5 in Jens
+
+\hypertarget{hinterbliebenenrentenversicherung}{%
+\subsubsection{Hinterbliebenenrentenversicherung}\label{hinterbliebenenrentenversicherung}}
+
+3.6.6 in Jens
+
+\hypertarget{berufs-erwerbsunfuxe4higkeitsversicherung}{%
+\subsubsection{Berufs-/Erwerbsunfähigkeitsversicherung}\label{berufs-erwerbsunfuxe4higkeitsversicherung}}
+
+3.6.7 Berufs-/Erwerbsunfähigkeitsversicherung in Jens
+
+\hypertarget{fondsgebundene-lebens--oder-rentenversicherung}{%
+\subsubsection{Fondsgebundene Lebens- oder
+Rentenversicherung}\label{fondsgebundene-lebens--oder-rentenversicherung}}
+
+3.6.8 Fondsgebundene Lebens- oder Rentenversicherung in Jens
+
+\hypertarget{versicherungsmathematische-notation}{%
+\subsubsection{Versicherungsmathematische
+Notation}\label{versicherungsmathematische-notation}}
+
+Versicherungsmathematische Notation
+
+\hypertarget{elementare-finanzmathematik}{%
+\subsection{Elementare
+Finanzmathematik}\label{elementare-finanzmathematik}}
+
+\hypertarget{zinsrechnung}{%
+\subsubsection{Zinsrechnung}\label{zinsrechnung}}
+
+\textbf{Zins:} Der Zins kann als Preis für die Übernahme eines Risikos
+und/oder als Preis für das Leihen von Geld angesehen werden.
+
+Grund für Zins:\\
+1. \textbf{Kreditausfallrisiko}: Risiko, dass der Kunde zahlungsunfähig
+wird\\
+2. \textbf{Opportunitätskosten}: Kosten aufgrund der entgangenen
+Möglichkeit, den als Kredit gewährten Betrag anderweitig zu investieren
+
+Notation:\\
+
+\(K_t\) Kapitalwachstumsfunktion
+
+\(t\) Zeiteinheit (standardmässig in Jahren)
+
+\textbf{p.a.} per annum
+
+\(i\) Zinssatz p.a.
+
+Wie werden bereits angefallene Zinsen behandelt?\\
+1. \textbf{Zinseszinsrechnung}: bereits angefallene (und nicht
+ausgezahlte) Zinsen in den Folgeperioden wieder mitverzinst\\
+2. \textbf{einfache Verzinsung}: die anfallenden Zinsen schlichtweg
+angesammelt werden
+
+Wann werden die Zinsen gutgeschrieben?\\
+1. \textbf{nachschüssigen Verzinsung}\\
+2. \textbf{vorschüssige Verzinsung}
+
+Modell:\\
+
+Einfache Verzinsung: \(K_t = K_0 \cdot (1 + t\cdot i)\)
+
+Zinseszins: \(K_t = K_0 \cdot (1 + i)^t\)
+
+\hypertarget{wichtigste-definitionen}{%
+\paragraph{Wichtigste Definitionen}\label{wichtigste-definitionen}}
+
+\textbf{Diskontfaktor:} \(v = \frac{1}{1+i}\) Welcher Betrag muss zum
+Zeitpunkt t = 0 investiert werden, damit sich nach einem Jahr der
+normierte Betrag der Höhe 1 ergibt?
+
+\textbf{Aufzinsungsfaktor:} \(r = 1+i\)
+
+\textbf{effektiver Zinssatz:} (pro Zeiteinheit) \(i\), falls der
+Einheitsbetrag 1 nach \(t\) Zeiteinheiten auf \((1+i)^t\)
+
+Beispiel: Bei einem Investment, welches sich über t Jahre erstreckt,
+werden in den einzelnen Jahren (i.d.R. unterschiedliche) Zinssätze
+gewährt, i.e.~\(i_1,\dots,\, i_t\). Interessiert man sich nun für die
+erzielte durchschnittliche Verzinsung, so sucht man den Effektivzinssatz
+i für den genannten Zeitraum.
+
+Fall 1: \textbf{Zinseszins}\\
+In diesem Fall lautet der Ansatz \[
+    K_0 \cdot (1+i_1) \cdot \dots \cdot (1+i_t) \overset{!}{=}  K_0 \cdot (1+i)^t
+  \]
+
+Den effektiven Zinssatz i erhält man somit als geometrisches Mittel der
+Aufzinsungsfaktoren, i.e. \[
+    1+i = \left( \prod_{j=1}^t (1+i_j) \right)^{\frac{1}{t}}
+  \]
+
+Fall 1: \textbf{Einfache Verzinsung}\\
+In diesem Fall lautet der Ansatz \[
+    K_0 \cdot (1 + i_1 \dots + i_t) \overset{!}{=}  K_0 \cdot (1 + t \cdot i)
+  \]
+
+Den effektiven Zinssatz i erhält man somit als arithmetisches Mittel der
+Aufzinsungsfaktoren, i.e. \[
+    i = \frac{1}{t} \sum_{j=1}^t i_j
+  \]
+
+\textbf{effektiver Diskontsatz:} (pro Zeiteinheit)
+\(d = 1 - v = \frac{i}{1+i} = iv\)
+
+Beachte: Die Angabe des Effektivzinssatzes i oder des
+Effektivdiskontsatzes d zueinander äquivalent:\\
+\[
+  1+i = \left(\frac{1}{1+i}\right)^{-1} = \left(1-\frac{i}{1+i}\right)^{-1} = (1-d)^{-1}
+\]
+
+\hypertarget{nominelle-verzinsung}{%
+\paragraph{Nominelle Verzinsung}\label{nominelle-verzinsung}}
+
+Bislang wurde angenommen, dass die Zinsen nur einmal pro Zeiteinheit,
+d.h. am Ende eines Jahres, fällig werden.
+
+Im Folgenden entfallen auf eine Zeiteinheit (Jahr) k Zinsperioden,
+welche jeweils eine Länge von \(\frac{1}{k}\) des Jahres haben. Folglich
+werden k-Mal pro Jahr Zinsen (nachschüssig) fällig. Diese Art der
+Zinsfälligkeit bezeichnet man als \textbf{unterjährige Verzinsung}.
+
+Die nachfolgenden Definitionen gewährleisten, dass der Zinsertrag über
+die gesamte Zeiteinheit mit der Summe der in den zugehörigen
+Zinsperioden erfolgenden Zinszahlungen übereinstimmt.
+
+Der \textbf{nominelle Zinssatz} oder auch \textbf{Nominalzinssatz}
+\(i^{(k)}\) pro Zeiteinheit wird durch folgende Gleichung definiert: \[
+  1 + i = \left(1+\frac{i^{(k)}}{k}\right)^k
+\]
+
+Anders ausgedrückt:\\
+Ein nomineller Zinssatz von \(i^{(k)}\) p.a. wird in k gleich großen
+Teilzahlungen (Raten) unterjährig ausgeschüttet. Er stimmt mit einem
+effektiven Zinssatz von \(\frac{i^{(k)}}{k}\) pro \(\frac{1}{k}\) eines
+Jahres überein.
+
+Beachte: Für k = 1 stimmen effektiver und nomineller Zinssatz überein.
+
+Analog existiert auch ein \textbf{nomineller Diskontsatz}, welcher mit
+\(d^{(k)}\) bezeichnet und mittels des effektiven Diskontsatzes d
+definiert wird, nämlich\\
+\[
+  1-d = \left(1-\frac{d^{(k)}}{k}\right)^k.
+\] Und wegen \(1+i = (1-d)^{-1}\) gilt: \[
+  \left(1+\frac{i^{(k)}}{k}\right)^{k} = \left(1-\frac{d^{(k)}}{k}\right)^{-k}
+\]
+
+\hypertarget{stetige-verzinsung}{%
+\paragraph{Stetige Verzinsung}\label{stetige-verzinsung}}
+
+4.1.6 Stetige Verzinsung
+
+\hypertarget{zahlungsstruxf6me-cash-flows}{%
+\subsubsection{Zahlungsströme (cash
+flows)}\label{zahlungsstruxf6me-cash-flows}}
+
+Die Mehrheit der finanziellen Zahlungsvorgänge, insbesondere alle hier
+betrachteten Zahlungsschemata, lassen sich unter dem gemeinsamen Dach
+eines Zahlungsstroms darstellen. Die Zeiteinheit beträgt, sofern nichts
+anderes gesagt wird, wiederum 1 Jahr, und die Verzinsung erfolgt
+nachschüssig (sowie ggf. unterjährig).
+
+\textbf{(diskreter) Zahlungsstrom:} ist eine Serie von Zahlungen
+\(z(t_j)\) , welche zu diskreten Zeitpunkten \(t_j\) mit
+\(j \in \{0,\dots, J\}\) gemacht werden. Die Zahlungen \(z(t_j)\) können
+positiv, negativ oder auch Null sein. In vielen Fällen ist \(t_j = j\),
+so dass die Zahlungen äquidistant, d.h. in gleichen Abständen, über die
+Zeitachse verteilt sind --- jedoch ist das nicht notwendigerweise der
+Fall.
+
+\hypertarget{bewertung-und-uxe4quivalenz-von-zahlungsstruxf6men}{%
+\paragraph{Bewertung und Äquivalenz von
+Zahlungsströmen}\label{bewertung-und-uxe4quivalenz-von-zahlungsstruxf6men}}
+
+Auf Basis eines effektiven Zinssatzes von \(i\) p.a. wird der
+\textbf{Wert des Zahlungsstroms} zu einem ausgewählten Zeitpunkt
+\(t^{\ast}\, (t_0 \leq t^{\ast} \leq t_J)\) definiert als (vom
+Englischen „cash flow``) \[
+  CF(t^{\ast};i) = \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t^{\ast}-t_j}.
+\]
+
+Der \textbf{Barwert} (\textbf{present value}) des Zahlungsstroms zum
+Zinssatz i, in Zeichen: \textbf{PV (i)} (vom Englischen „present
+value``), ist der Wert des Zahlungsstroms zum Zeitpunkt
+\(t^{\ast} = t_0\), d.h. \[
+  PV(i) := CF(t_0;i) =  \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t_0-t_j}.
+\]
+
+Der \textbf{Endwert} (\textbf{terminal value}) des Zahlungsstroms zum
+Zinssatz i, in Zeichen: \textbf{TV (i)} ist der Wert des Zahlungsstroms
+zum Zeitpunkt \(t^{\ast} = t_J\), d.h. \[
+  TV(i) := CF(t_J;i) =  \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t_J-t_j}.
+\] Es gilt für drei Zeitpunkte \(s\), \(t\) und \(t^{\ast}\):
+\begin{align*}
+  CF(t;i) &= (1+i)^{t-s}\,\cdot\, CF(s;i)\\
+  CF(t;i) &= (1+i)^{t-s}\,\cdot\, CF(s;i)\\
+  CF(t^{\ast};i) &= (1+i)^{t^{\ast}}\,\cdot\,PV(i)\\
+  TV(i) &= (1+i)^{t_J}\,\cdot PV(i)\\
+  PV(i) &= v^{t_J}\,\cdot TV(i)
+\end{align*}
+
+\hypertarget{spezielle-zahlungsstruxf6me}{%
+\paragraph{Spezielle Zahlungsströme}\label{spezielle-zahlungsstruxf6me}}
+
+Für diese speziellen Bar- und Endwerte hat sich eine besondere Notation
+entwickelt, welche sich auch in der Versicherungsmathematik in sehr
+ähnlicher Form wiederfinden wird.
+
+Die Zeiteinheit betrage weiterhin 1 Jahr, und der jährliche (effektive)
+Zinssatz sei \(i\) p.a.\\
+Die jährlichen Zahlungen haben jeweils die normierte Höhe 1 (sofern
+nichts anderes gesagt wird).
+
+\hypertarget{einmalzahlung}{%
+\subparagraph{Einmalzahlung}\label{einmalzahlung}}
+
+Eine \textbf{Einmalzahlung} ist eine Zahlung, die einmalig zu einem
+vorab festgelegten Zeitpunkt geleistet wird.
+
+Einmalzahlung nach \(n\) Jahren:\\
+Zugehöriger Zahlungsstrom: \(J=n,\, j\in\{0,\dots,n\}\) mit \(z(t_j)=0\)
+für \(t_j= 0,\dots,n-1\) und \(z(n)=1\).\\
+Zugehöriger Barwert: \(PV(i) = CF(0;i) = v^n\)\\
+Zugehöriger Endwert: \(TV(i) = CF(n;i) = 1\)
+
+Einmalzahlung sofort:\\
+Zugehöriger Zahlungsstrom: \(J=n,\, j\in\{0,\dots,n\}\) mit \(z(0)=1\)
+und \(z(t_j)=0\) für \(t_j= 1,\dots,n\).\\
+Zugehöriger Barwert: \(PV(i) = CF(0;i) = 1\)\\
+Zugehöriger Endwert: \(TV(i) = CF(n;i) = (1+i)^n\)
+
+\hypertarget{zeitrenten}{%
+\subparagraph{Zeitrenten}\label{zeitrenten}}
+
+Da die Zahlungen deterministisch sind, handelt es sich bei den folgenden
+Zahlungsschemata um Zeitrenten.\\
+Die Rentenzahlungen können entweder vorschüssig zu Beginn oder
+nachschüssig, d.h. am Ende des jeweiligen Jahres, erfolgen.
+
+(temporäre) Zeitrente, vorschüssig:\\
+Eine \(n\) Jahre lang vorschüssig zahlbare (temporäre) Zeitrente (der
+Höhe 1).\\
+Zugehöriger Zahlungsstrom: \(J=n,\, j\in\{0,\dots,n\}\) mit \(z(t_j)=1\)
+für \(t_j= 1,\dots,n-1\) und \(z(n)=1\).\\
+Zugehöriger Barwert:
+\(PV(i) = CF(0;i) = 1 + v + v^2 + \cdots + v^{n-1} = \frac{1-v^n}{1-v} = \frac{1-v^n}{d}\)\\
+Dieser Barwert wird als \textbf{vorschüssiger Rentenbarwertfaktor}
+bezeichnet. Symbol: \[
+  \ddot{a}_{\tikz[baseline=(n.base)]{\node[inner sep=1pt,draw,rectangle] (n) {\( n \)};}} = \frac{1 - v^n}{d}
+\]
+
+\[
+  \ax*{\angln}
+\]
+
+\end{document}

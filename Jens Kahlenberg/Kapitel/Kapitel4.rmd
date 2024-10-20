@@ -1,0 +1,211 @@
+## Elementare Finanzmathematik {.tabset}
+
+
+### Zinsrechnung {.tabset}
+
+<u>**Zins:**</u> 
+Der Zins kann als Preis für die Übernahme eines Risikos und/oder als Preis für das Leihen von Geld angesehen werden.
+
+<u>Grund für Zins:</u>  
+1. **Kreditausfallrisiko**: Risiko, dass der Kunde zahlungsunfähig wird  
+2. **Opportunitätskosten**: Kosten aufgrund der entgangenen Möglichkeit, den als Kredit gewährten
+                        Betrag anderweitig zu investieren
+
+
+<u>Notation:</u>  
+<ul>
+  <li>$K_t$ Kapitalwachstumsfunktion</li>
+  <li>$t$ Zeiteinheit (standardmässig in Jahren)</li>
+  <li>**p.a.** per annum</li>
+  <li>$i$ Zinssatz p.a.</li>
+</ul>
+
+
+<u>Wie werden bereits angefallene Zinsen behandelt?</u>  
+1. **Zinseszinsrechnung**: bereits angefallene (und nicht ausgezahlte) Zinsen in den Folgeperioden
+wieder mitverzinst  
+2. **einfache Verzinsung**: die anfallenden Zinsen schlichtweg angesammelt werden
+
+
+<u>Wann werden die Zinsen gutgeschrieben?</u>  
+1. **nachschüssigen Verzinsung**  
+2. **vorschüssige Verzinsung**
+
+
+<u>Modell:</u>  
+<ul>
+  <li>Einfache Verzinsung: $K_t = K_0 \cdot (1 + t\cdot i)$</li>
+  <li>Zinseszins: $K_t = K_0 \cdot (1 + i)^t$</li>
+</ul>
+
+
+#### Wichtigste Definitionen
+
+**Diskontfaktor:** $v = \frac{1}{1+i}$ Welcher Betrag muss zum Zeitpunkt t = 0 investiert werden,
+damit sich nach einem Jahr der normierte Betrag der Höhe 1 ergibt?  
+
+**Aufzinsungsfaktor:** $r = 1+i$
+
+**effektiver Zinssatz:** (pro Zeiteinheit) $i$, falls der Einheitsbetrag 1 nach $t$ Zeiteinheiten auf $(1+i)^t$  
+
+<u>Beispiel:</u> Bei einem Investment, welches sich über t Jahre erstreckt, werden in den einzelnen
+Jahren (i.d.R. unterschiedliche) Zinssätze gewährt, i.e. $i_1,\dots,\, i_t$. 
+Interessiert man sich nun für die erzielte durchschnittliche Verzinsung, so sucht man den
+Effektivzinssatz i für den genannten Zeitraum. 
+
+  <u>Fall 1:</u> **Zinseszins**  
+  In diesem Fall lautet der Ansatz
+  \[
+    K_0 \cdot (1+i_1) \cdot \dots \cdot (1+i_t) \overset{!}{=}  K_0 \cdot (1+i)^t
+  \]
+
+  Den effektiven Zinssatz i erhält man somit als geometrisches Mittel der Aufzinsungsfaktoren, i.e.
+  \[
+    1+i = \left( \prod_{j=1}^t (1+i_j) \right)^{\frac{1}{t}}
+  \]
+  
+  <u>Fall 1:</u> **Einfache Verzinsung**  
+  In diesem Fall lautet der Ansatz
+  \[
+    K_0 \cdot (1 + i_1 \dots + i_t) \overset{!}{=}  K_0 \cdot (1 + t \cdot i)
+  \]
+
+  Den effektiven Zinssatz i erhält man somit als arithmetisches Mittel der Aufzinsungsfaktoren, i.e.
+  \[
+    i = \frac{1}{t} \sum_{j=1}^t i_j
+  \]
+
+
+**effektiver Diskontsatz:** (pro Zeiteinheit) $d = 1 - v = \frac{i}{1+i} = iv$  
+
+<u>Beachte:</u> Die Angabe des Effektivzinssatzes i oder des Effektivdiskontsatzes d zueinander äquivalent:  
+\[
+  1+i = \left(\frac{1}{1+i}\right)^{-1} = \left(1-\frac{i}{1+i}\right)^{-1} = (1-d)^{-1}
+\]
+
+
+#### Nominelle Verzinsung
+Bislang wurde angenommen, dass die Zinsen nur einmal pro Zeiteinheit, d.h. am Ende eines Jahres, fällig werden. 
+
+Im Folgenden entfallen auf eine Zeiteinheit (Jahr) k Zinsperioden, welche jeweils eine Länge von 
+$\frac{1}{k}$ des Jahres haben. Folglich werden k-Mal pro Jahr Zinsen (nachschüssig) fällig. Diese Art der Zinsfälligkeit bezeichnet man als **unterjährige Verzinsung**.  
+
+Die nachfolgenden Definitionen gewährleisten, dass der Zinsertrag über die gesamte Zeiteinheit mit der Summe
+der in den zugehörigen Zinsperioden erfolgenden Zinszahlungen übereinstimmt.  
+
+Der **nominelle Zinssatz** oder auch **Nominalzinssatz** $i^{(k)}$ pro Zeiteinheit wird durch folgende
+Gleichung definiert:
+\[
+  1 + i = \left(1+\frac{i^{(k)}}{k}\right)^k
+\]
+
+Anders ausgedrückt:  
+Ein nomineller Zinssatz von $i^{(k)}$ p.a. wird in k gleich großen Teilzahlungen (Raten) unterjährig 
+ausgeschüttet. Er stimmt mit einem effektiven Zinssatz von $\frac{i^{(k)}}{k}$ pro $\frac{1}{k}$ eines Jahres überein.
+
+<u>Beachte:</u> Für k = 1 stimmen effektiver und nomineller Zinssatz überein.
+
+
+Analog existiert auch ein **nomineller Diskontsatz**, welcher mit $d^{(k)}$ bezeichnet und mittels des
+effektiven Diskontsatzes d definiert wird, nämlich  
+\[
+  1-d = \left(1-\frac{d^{(k)}}{k}\right)^k.
+\]
+Und wegen $1+i = (1-d)^{-1}$ gilt:
+\[
+  \left(1+\frac{i^{(k)}}{k}\right)^{k} = \left(1-\frac{d^{(k)}}{k}\right)^{-k}
+\]
+
+
+#### Stetige Verzinsung
+4.1.6 Stetige Verzinsung
+
+
+
+### Zahlungsströme (cash flows) {.tabset}
+Die Mehrheit der finanziellen Zahlungsvorgänge, insbesondere alle hier betrachteten
+Zahlungsschemata, lassen sich unter dem gemeinsamen Dach eines Zahlungsstroms darstellen. Die Zeiteinheit
+beträgt, sofern nichts anderes gesagt wird, wiederum 1 Jahr, und die Verzinsung erfolgt nachschüssig (sowie
+ggf. unterjährig).  
+
+**(diskreter) Zahlungsstrom:** ist eine Serie von Zahlungen $z(t_j)$ , welche zu diskreten Zeitpunkten 
+$t_j$ mit $j \in \{0,\dots, J\}$ gemacht werden. Die Zahlungen $z(t_j)$ können positiv, negativ oder auch
+Null sein. In vielen Fällen ist $t_j = j$, so dass die Zahlungen äquidistant, d.h. in gleichen Abständen,
+über die Zeitachse verteilt sind — jedoch ist das nicht notwendigerweise der Fall.  
+
+<img src="C:/Users/danie/Dropbox/1_Ausbildung Aktuar/ETH/Lebensversicherungsmathematik/Jens Kahlenberg/Bilder/Cash flows.png" alt="Cash flows">
+
+
+#### Bewertung und Äquivalenz von Zahlungsströmen
+Auf Basis eines effektiven Zinssatzes von $i$ p.a. wird der **Wert des Zahlungsstroms** zu einem ausgewählten
+Zeitpunkt $t^{\ast}\, (t_0 \leq t^{\ast} \leq t_J)$ definiert als (vom Englischen „cash flow“)
+\[
+  CF(t^{\ast};i) = \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t^{\ast}-t_j}.
+\]
+
+Der **Barwert** (**present value**) des Zahlungsstroms zum Zinssatz i, in Zeichen: **PV (i)** 
+(vom Englischen „present value“), ist der Wert des Zahlungsstroms zum Zeitpunkt $t^{\ast} = t_0$, d.h.
+\[
+  PV(i) := CF(t_0;i) =  \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t_0-t_j}.
+\]
+
+Der **Endwert** (**terminal value**) des Zahlungsstroms zum Zinssatz i, in Zeichen: **TV (i)** 
+ist der Wert des Zahlungsstroms zum Zeitpunkt $t^{\ast} = t_J$, d.h.
+\[
+  TV(i) := CF(t_J;i) =  \sum_{j=0}^J z(t_j)\,\cdot\, (1+i)^{t_J-t_j}.
+\]
+Es gilt für drei Zeitpunkte $s$, $t$ und $t^{\ast}$: 
+\begin{align*}
+  CF(t;i) &= (1+i)^{t-s}\,\cdot\, CF(s;i)\\
+  CF(t;i) &= (1+i)^{t-s}\,\cdot\, CF(s;i)\\
+  CF(t^{\ast};i) &= (1+i)^{t^{\ast}}\,\cdot\,PV(i)\\
+  TV(i) &= (1+i)^{t_J}\,\cdot PV(i)\\
+  PV(i) &= v^{t_J}\,\cdot TV(i)
+\end{align*}
+
+
+#### Spezielle Zahlungsströme
+Für diese speziellen Bar- und Endwerte hat sich eine besondere Notation entwickelt, welche sich auch in der
+Versicherungsmathematik in sehr ähnlicher Form wiederfinden wird.
+
+Die Zeiteinheit betrage weiterhin 1 Jahr, und der jährliche (effektive) Zinssatz sei $i$ p.a.  
+Die jährlichen Zahlungen haben jeweils die normierte Höhe 1 (sofern nichts anderes gesagt wird).  
+
+
+##### Einmalzahlung
+Eine **Einmalzahlung** ist eine Zahlung, die einmalig zu einem vorab festgelegten Zeitpunkt geleistet wird.  
+
+<u>Einmalzahlung nach $n$ Jahren:</u>  
+Zugehöriger Zahlungsstrom: $J=n,\, j\in\{0,\dots,n\}$ mit $z(t_j)=0$ für $t_j= 0,\dots,n-1$ und $z(n)=1$.  
+Zugehöriger Barwert: $PV(i) = CF(0;i) = v^n$  
+Zugehöriger Endwert: $TV(i) = CF(n;i) = 1$  
+
+
+<u>Einmalzahlung sofort:</u>  
+Zugehöriger Zahlungsstrom: $J=n,\, j\in\{0,\dots,n\}$ mit $z(0)=1$ und $z(t_j)=0$ für $t_j= 1,\dots,n$.  
+Zugehöriger Barwert: $PV(i) = CF(0;i) = 1$  
+Zugehöriger Endwert: $TV(i) = CF(n;i) = (1+i)^n$  
+
+
+##### Zeitrenten
+Da die Zahlungen deterministisch sind, handelt es sich bei den folgenden Zahlungsschemata um Zeitrenten.  
+Die Rentenzahlungen können entweder vorschüssig zu Beginn oder nachschüssig, d.h. am Ende des jeweiligen
+Jahres, erfolgen.  
+
+
+<u>(temporäre) Zeitrente, vorschüssig:</u>  
+Eine $n$ Jahre lang vorschüssig zahlbare (temporäre) Zeitrente (der Höhe 1).  
+Zugehöriger Zahlungsstrom: $J=n,\, j\in\{0,\dots,n\}$ mit $z(t_j)=1$ für $t_j= 1,\dots,n-1$ und $z(n)=1$.  
+Zugehöriger Barwert: $PV(i) = CF(0;i) = 1 + v + v^2 + \cdots + v^{n-1} = \frac{1-v^n}{1-v} = \frac{1-v^n}{d}$  
+Dieser Barwert wird als **vorschüssiger Rentenbarwertfaktor** bezeichnet. Symbol: 
+\[
+  \ddot{a}_{\boxaroundn} = \frac{1 - v^n}{d}
+\]
+
+\[
+  \ax*{\angln}
+\]
+
+
+
+
